@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.sidebar {
+    display: flex;
+    width: 20%;
+    height: 100%;
+    flex-direction: column;
+    border-right: 2px solid #ff4b6e;
+    justify-content: center;
+    position: fixed;
+}
+.information {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 30%;
+}
+.btn {
+    background-image: linear-gradient(#ff4b6e, #ff9349);
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 20px;
+    margin: 20px;
+}
