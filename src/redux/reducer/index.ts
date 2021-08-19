@@ -1,10 +1,10 @@
-import {action} from '../../types';
+import {action, rootState} from '../../types';
 import {SET_ACCOUNTS, SET_TRANSACTIONS, SET_USERS} from '../actions';
 
-const initialState = {
-    users: [],
-    accounts: [],
-    transactions: [],
+const initialState: rootState = {
+    user: [],
+    account: [],
+    transaction: [],
 };
 
 export default function rootReducer(state = initialState, action: action) {
@@ -12,17 +12,17 @@ export default function rootReducer(state = initialState, action: action) {
         case SET_USERS:
             return {
                 ...state,
-                users: action.payload,
+                user: action.payload,
             };
         case SET_ACCOUNTS:
             return {
                 ...state,
-                accounts: action.payload,
+                account: action.payload,
             };
         case SET_TRANSACTIONS:
             return {
                 ...state,
-                transactions: action.payload,
+                transaction: action.payload,
             };
         default:
             return {...state};
