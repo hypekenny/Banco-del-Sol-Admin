@@ -1,11 +1,21 @@
 import React from 'react';
-// import styles from './UsersStyles.module.css';
+import {useSelector} from 'react-redux';
+import {rootState} from '../../types';
+import styles from './UsersStyles.module.css';
+import constants from '../constants.module.css';
 
 export function Users() {
+    const allUsers = useSelector((state: rootState) => state.user);
     return (
-        <div>
+        <div className={styles.container}>
             <div>
-                <label>USERS</label>
+                {allUsers &&
+                    allUsers.map((user, i) => (
+                        <div key={i} className={constants.card}>
+                            <p>name: {user.name}</p>
+                            <p>lastname: {user.lastName}</p>
+                        </div>
+                    ))}
             </div>
         </div>
     );
