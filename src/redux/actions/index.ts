@@ -5,7 +5,7 @@ export const SET_ACCOUNTS = 'SET_ACCOUNTS';
 export const SET_TRANSACTIONS = 'SET_TRANSACTIONS';
 
 export function setUsers(users: user) {
-    return (dispatch) => {
+    return (dispatch: any) => {
         dispatch({
             type: SET_USERS,
             payload: users,
@@ -13,7 +13,7 @@ export function setUsers(users: user) {
     };
 }
 export function setAccounts(accounts: account) {
-    return (dispatch) => {
+    return (dispatch: any) => {
         dispatch({
             type: SET_ACCOUNTS,
             payload: accounts,
@@ -21,7 +21,7 @@ export function setAccounts(accounts: account) {
     };
 }
 export function setTransactions(transactions: transaction) {
-    return (dispatch) => {
+    return (dispatch: any) => {
         dispatch({
             type: SET_TRANSACTIONS,
             payload: transactions,
