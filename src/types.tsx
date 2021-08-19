@@ -1,4 +1,15 @@
+export interface user {
+    id: string;
+    name: string;
+    lastName: string;
+    email: number;
+    dni: number;
+    phoneNumber: string;
+    birthdate: Date;
+    address: address;
+}
 export interface transaction {
+    id: string;
     senderEmail: string;
     receiverEmail: string;
     value: number;
@@ -7,14 +18,12 @@ export interface transaction {
     date: Date;
     succeeded: boolean;
 }
-export interface user {
-    name: string;
-    lastName: string;
-    email: number;
-    dni: number;
-    phoneNumber: string;
-    birthdate: Date;
-    address: address;
+
+export interface account {
+    id: string;
+    email: string;
+    cvu: string;
+    balance: balance;
 }
 
 export interface address {
@@ -25,12 +34,6 @@ export interface address {
     province: string;
 }
 
-export interface account {
-    email: string;
-    cvu: string;
-    balance: balance;
-}
-
 export interface balance {
     amount: number;
     history: Array<transaction>;
@@ -38,11 +41,11 @@ export interface balance {
 
 export interface action {
     type: string;
-    payload: object;
+    payload: any;
 }
 
-export interface rootStore {
-    users: [user];
-    accounts: [account];
-    transactions: [transaction];
+export interface rootState {
+    user: user[];
+    account: account[];
+    transaction: transaction[];
 }
