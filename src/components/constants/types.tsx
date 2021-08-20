@@ -48,4 +48,5 @@ export interface rootState {
     user: user[];
     account: account[];
     transaction: transaction[];
+    token: string;
 }
