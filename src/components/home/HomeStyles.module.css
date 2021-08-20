@@ -1,6 +1,7 @@
 .container {
     display: flex;
     flex-direction: row;
+    height: auto;
 }
 .sidebar {
     display: flex;
@@ -13,7 +14,9 @@
 .information {
     display: flex;
     justify-content: space-evenly;
-    margin-left: 30%;
+    margin-left: 20%;
+    width: 100%;
+    height: 100%;
 }
 .btn {
     background-image: linear-gradient(#ff4b6e, #ff9349);
