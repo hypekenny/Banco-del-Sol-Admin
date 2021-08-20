@@ -1,67 +1,56 @@
 import React from 'react';
-import {Line, LineChart, ResponsiveContainer, XAxis} from 'recharts';
+import {useSelector} from 'react-redux';
+import {LineChart, Line, XAxis, YAxis} from 'recharts';
+import {rootState} from '../../types';
 import styles from './DataStyles.module.css';
 
 export function Data() {
-    const data = [
-        {
-            month: 'Jan',
-            amount: 200,
-        },
-        {
-            month: 'Feb',
-            amount: 123,
-        },
-        {
-            month: 'Mar',
-            amount: 515,
-        },
-        {
-            month: 'Apr',
-            amount: 7357,
-        },
-        {
-            month: 'may',
-            amount: 579,
-        },
-        {
-            month: 'Jun',
-            amount: 246,
-        },
-        {
-            month: 'Jul',
-            amount: 345,
-        },
-        {
-            month: 'Agu',
-            amount: 6246,
-        },
-        {
-            month: 'Sep',
-            amount: 2624,
-        },
-        {
-            month: 'Oct',
-            amount: 650,
-        },
-        {
-            month: 'Nov',
-            amount: 2020,
-        },
-        {
-            month: 'Dec',
-            amount: 2010,
-        },
-    ];
+    const allTransactions = useSelector((state: rootState) => state.transaction);
+
+    interface dataT {
+        amount: number;
+        name: string;
+    }
+    const data: dataT[] = [];
+    allTransactions.map((tran) => {
+        const tranMonth = tran.date.toString().split(' ')[1];
+        if (!data.length) {
+            console.log('solo uno');
+            data.push({amount: tran.value, name: tranMonth});
+        }
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].name === tranMonth) {
+                console.log('a');
+                data[i].amount += tran.value;
+            } else {
+                console.log('b');
+                data.push({amount: tran.value, name: tranMonth});
+            }
+        }
+    });
+
+    data.push({amount: 1200, name: 'Sep'});
+    data.push({amount: 2400, name: 'Oct'});
+    data.push({amount: 5500, name: 'Nov'});
+    data.push({amount: 100, name: 'Dec'});
+
+    console.log('final', data);
+
     return (
-        <div className={Styles.chart}>
-            <div className={Styles.chart}>
-                <ResponsiveContainer width="100%" aspect={4 / 1}>
-                    <LineChart data={data}>
-                        <XAxis dataKey="month" stroke="#ff4b6e" />
-                        <Line type="monotone" dataKey="amount" stroke="#ff4b6e" />
-                    </LineChart>
-                </ResponsiveContainer>
+        <div>
+            <div className={styles.chart}>
+                <LineChart width={600} height={500} data={data}>
+                    <Line type="monotone" dataKey="amount" stroke="#ff4b6e" />
+                    <XAxis dataKey="name" stroke="#ff4b6e" />
+                    <YAxis stroke="#ff4b6e" />
+                </LineChart>
+            </div>
+            <div className={styles.chart}>
+                <LineChart width={600} height={500} data={data}>
+                    <Line type="monotone" dataKey="amount" stroke="#ff4b6e" />
+                    <XAxis dataKey="name" stroke="#ff4b6e" />
+                    <YAxis stroke="#ff4b6e" />
+                </LineChart>
             </div>
         </div>
     );
