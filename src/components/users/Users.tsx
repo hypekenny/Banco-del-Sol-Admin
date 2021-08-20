@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {rootState} from '../../types';
+import {rootState} from '../constants/types';
 import styles from './UsersStyles.module.css';
-import constants from '../constants.module.css';
+import constants from '../constants/constants.module.css';
 
 export function Users() {
     const allUsers = useSelector((state: rootState) => state.user);

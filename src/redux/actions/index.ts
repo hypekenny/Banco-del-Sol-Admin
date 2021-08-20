@@ -1,8 +1,9 @@
-import {account, transaction, user} from '../../types';
+import {account, transaction, user} from '../../components/constants/types';
 
 export const SET_USERS = 'SET_USERS';
 export const SET_ACCOUNTS = 'SET_ACCOUNTS';
 export const SET_TRANSACTIONS = 'SET_TRANSACTIONS';
+export const SET_TOKEN = 'SET_TOKEN';
 
 export function setUsers(users: user) {
     return (dispatch: any) => {
@@ -25,6 +26,14 @@ export function setTransactions(transactions: transaction) {
         dispatch({
             type: SET_TRANSACTIONS,
             payload: transactions,
+        });
+    };
+}
+export function setToken(token: string) {
+    return (dispatch: any) => {
+        dispatch({
+            type: SET_TOKEN,
+            payload: token,
         });
     };
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {LineChart, Line, XAxis, YAxis} from 'recharts';
-import {rootState} from '../../types';
+import {rootState} from '../constants/types';
 import styles from './DataStyles.module.css';
 
 export function Data() {
@@ -51,7 +51,7 @@ export function Data() {
     monthlyData[0].dailyData.push({number: 24, amount: 2400, name: 'Wed'});
 
     return (
-        <div>
+        <div className={styles.container}>
             <div className={styles.chart}>
                 <LineChart width={600} height={500} data={monthlyData}>
                     <Line type="monotone" dataKey="amount" stroke="#ff4b6e" />

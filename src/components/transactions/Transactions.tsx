@@ -1,8 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {rootState} from '../../types';
-import styles from './TransactionsStyles.module.css';
-import constants from '../constants.module.css';
+import {rootState} from '../constants/types';
+import constants from '../constants/constants.module.css';
 
 export function Transactions() {
     const allTransactions = useSelector((state: rootState) => state.transaction);
