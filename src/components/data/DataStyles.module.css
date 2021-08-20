@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.chart {
+    margin: 20px;
+    padding: 20px;
+}
