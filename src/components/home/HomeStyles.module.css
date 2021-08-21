@@ -18,15 +18,8 @@
     width: 100%;
     height: 100%;
 }
-.btn {
-    background-image: linear-gradient(#ff4b6e, #ff9349);
-    padding: 10px;
-    font-size: 30px;
-    border-radius: 20px;
-    margin: 20px;
-}
 .title {
-    color: orange;
+    color: rgb(255, 136, 0);
     font-size: 50px;
     margin-bottom: 40%;
 }

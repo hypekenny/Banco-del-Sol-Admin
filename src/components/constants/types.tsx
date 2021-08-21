@@ -16,7 +16,7 @@ export interface transaction {
     type: string;
     comment: string;
     date: Date;
-    succeeded: boolean;
+    condition: string;
 }
 
 export interface account {
@@ -48,4 +48,5 @@ export interface rootState {
     user: user[];
     account: account[];
     transaction: transaction[];
+    token: string;
 }
