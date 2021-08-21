@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {account, transaction, user} from '../../components/constants/types';
 
 export const SET_USERS = 'SET_USERS';
@@ -36,4 +37,8 @@ export function setToken(token: string) {
             payload: token,
         });
     };
+}
+
+export async function updateTransaction(id: string, condition: string) {
+    await axios.post('http://localhost:3000/api2/transactions/update', {id, condition});
 }
