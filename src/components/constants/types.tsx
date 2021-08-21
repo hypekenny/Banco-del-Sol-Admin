@@ -16,7 +16,7 @@ export interface transaction {
     type: string;
     comment: string;
     date: Date;
-    succeeded: boolean;
+    condition: string;
 }
 
 export interface account {
