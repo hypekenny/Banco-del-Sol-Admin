@@ -12,9 +12,9 @@ export function Accounts() {
                 {allAccounts &&
                     allAccounts.map((acc, i) => (
                         <div key={i} className={constants.card}>
-                            <p>email: {acc.email}</p>
-                            <p>cvu: {acc.cvu}</p>
-                            <p>amount: {acc.balance && acc.balance.amount}</p>
+                            <label className={constants.text}>email: {acc.email}</label>
+                            <label className={constants.text}>cvu: {acc.cvu}</label>
+                            <label className={constants.text}>amount: {acc.balance && acc.balance.amount}</label>
                         </div>
                     ))}
             </div>
