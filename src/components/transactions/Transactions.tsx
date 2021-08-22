@@ -1,20 +1,14 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {rootState, transaction} from '../constants/types';
+import {rootState} from '../constants/types';
 import constants from '../constants/constants.module.css';
 import {setTransactions, updateTransaction} from '../../redux/actions';
 import {useState} from 'react';
-import {useEffect} from 'react';
 
 export function Transactions() {
     const transactionsStore = useSelector((state: rootState) => state.transaction);
-    const [transactionsLocal, setTransactionsLocal] = useState<transaction[]>([]);
     const [view, setView] = useState('pending');
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        setTransactionsLocal(transactionsStore);
-    }, [transactionsStore]);
 
     function handleUpdate(id: string, condition: string) {
         updateTransaction(id, condition);
@@ -43,8 +37,8 @@ export function Transactions() {
                     failed
                 </button>
             </div>
-            {transactionsLocal &&
-                transactionsLocal.map((tran, i) =>
+            {transactionsStore &&
+                transactionsStore.map((tran, i) =>
                     tran.condition === view ? (
                         <div key={i} className={constants.card}>
                             {view === 'pending' ? <button onClick={() => handleUpdate(tran.id, 'accepted')}>accept</button> : null}
