@@ -31,8 +31,7 @@ export function App() {
                     const accountsRes = await axios.get('http://localhost:3000/api2/account');
                     if (accountsRes.data) dispatch(setAccounts(accountsRes.data));
 
-                    const transactionsRes = await axios.get('http://localhost:3000/api2/transactions');
-                    if (transactionsRes.data) dispatch(setTransactions(transactionsRes.data));
+                    dispatch(setTransactions());
                 });
             });
     })();
