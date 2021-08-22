@@ -1,5 +1,6 @@
 import axios from 'axios';
 import firebase from 'firebase';
+import {user} from '../../components/constants/types';
 require('firebase/firebase-auth');
 
 export const SET_USERS = 'SET_USERS';
@@ -7,7 +8,9 @@ export const SET_ACCOUNTS = 'SET_ACCOUNTS';
 export const SET_TRANSACTIONS = 'SET_TRANSACTIONS';
 export const SET_TOKEN = 'SET_TOKEN';
 
-export function createUser(user: any, password: string) {
+export function createUser(user: any, address: any, password: string) {
+    user.address = address;
+    console.log('dentro del index', user);
     return (dispatch: any) => {
         firebase
             .auth()
@@ -68,6 +71,22 @@ export function getTransactions() {
         });
     };
 }
+
+export async function deleteUser(users: user[], token: string, dispatch: any) {
+    try {
+        await axios.delete('http://localhost:3001/api/user/', {
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
+            data: {users},
+        });
+        dispatch(getUsers(token));
+        dispatch(getAccounts());
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export function setToken(token: string) {
     return (dispatch: any) => {
         dispatch({
