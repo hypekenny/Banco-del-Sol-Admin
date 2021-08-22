@@ -22,11 +22,13 @@ export function setAccounts(accounts: account) {
         });
     };
 }
-export function setTransactions(transactions: transaction) {
-    return (dispatch: any) => {
+export function setTransactions() {
+    return async (dispatch: any) => {
+        const response = await axios.get('http://localhost:3000/api2/transactions');
+        console.log('response', response.data);
         dispatch({
             type: SET_TRANSACTIONS,
-            payload: transactions,
+            payload: response.data,
         });
     };
 }
