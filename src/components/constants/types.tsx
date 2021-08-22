@@ -5,8 +5,9 @@ export interface user {
     email: string;
     dni: number;
     phoneNumber: string;
-    birthdate: Date;
+    birthdate: string;
     address: address;
+    condition: string;
 }
 export interface transaction {
     id: string;
