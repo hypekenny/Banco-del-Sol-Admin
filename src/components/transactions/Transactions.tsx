@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {rootState} from '../constants/types';
 import constants from '../constants/constants.module.css';
-import {setTransactions, updateTransaction} from '../../redux/actions';
+import {getTransactions, updateTransaction} from '../../redux/actions';
 import {useState} from 'react';
 
 export function Transactions() {
@@ -13,7 +13,7 @@ export function Transactions() {
     function handleUpdate(id: string, condition: string) {
         updateTransaction(id, condition);
         setTimeout(() => {
-            dispatch(setTransactions());
+            dispatch(getTransactions());
         }, 500);
     }
 
@@ -21,7 +21,7 @@ export function Transactions() {
         <div>
             <div>
                 <h1>Transaction list</h1>
-                <button className={constants.btn} onClick={() => dispatch(setTransactions())}>
+                <button className={constants.btn} onClick={() => dispatch(getTransactions())}>
                     reload
                 </button>
                 <button className={constants.btn} onClick={() => setView('pending')}>
