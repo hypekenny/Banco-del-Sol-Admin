@@ -4,7 +4,7 @@ import {rootState, user} from '../constants/types';
 import styles from './UsersStyles.module.css';
 import constants from '../constants/constants.module.css';
 import {useState} from 'react';
-import {createUser, deleteUser} from '../../redux/actions';
+import {createUser, getUsers, manageUser} from '../../redux/actions';
 import {useEffect} from 'react';
 import {MdDelete, MdDeleteForever, MdEdit} from 'react-icons/md';
 
@@ -16,7 +16,8 @@ export function Users() {
     const [newUser, setNewUser] = useState({email: '', name: '', lastName: '', dni: '', phoneNumber: '', birthdate: '', address: {}});
     const [newAddress, setNewAddress] = useState({street: '', number: '', zipCode: '', city: '', province: ''});
     const [password, setPassword] = useState('');
-    const [deleted, setDeleted] = useState<user[]>([]);
+    const [disabled, setDisabled] = useState<user[]>([]);
+    const [undisabled, setUndisabled] = useState<user[]>([]);
     const dispatch = useDispatch();
     const [view, setView] = useState('active');
 
@@ -34,12 +35,30 @@ export function Users() {
         }, 500);
     }
 
-    async function addDelete(user: user) {
-        setDeleted([...deleted, user]);
+    async function addDisabled(user: user) {
+        // setDeleted([...deleted, user]); por algun motivo no funciona
+        disabled.push(user);
     }
 
-    async function handleDelete() {
-        deleteUser(deleted, token, dispatch);
+    async function handleDisabled() {
+        manageUser(disabled, 'disabled', token, dispatch);
+        update();
+    }
+
+    async function addUndisabled(user: user) {
+        // setDeleted([...deleted, user]); por algun motivo no funciona
+        undisabled.push(user);
+    }
+
+    async function handleUndisabled() {
+        manageUser(undisabled, 'active', token, dispatch);
+        update();
+    }
+
+    function update() {
+        setTimeout(() => {
+            dispatch(getUsers(token));
+        }, 500);
     }
 
     useEffect(() => {
@@ -103,9 +122,9 @@ export function Users() {
                                             <button
                                                 className={styles.disableBtn}
                                                 onClick={() => {
-                                                    addDelete(user);
+                                                    addDisabled(user);
                                                     setTimeout(() => {
-                                                        handleDelete();
+                                                        handleDisabled();
                                                     }, 500);
                                                 }}
                                             >
@@ -117,9 +136,9 @@ export function Users() {
                                         <button
                                             className={styles.disableBtn}
                                             onClick={() => {
-                                                addDelete(user);
+                                                addUndisabled(user);
                                                 setTimeout(() => {
-                                                    handleDelete();
+                                                    handleUndisabled();
                                                 }, 500);
                                             }}
                                         >
