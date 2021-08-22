@@ -72,13 +72,13 @@ export function getTransactions() {
     };
 }
 
-export async function deleteUser(users: user[], token: string, dispatch: any) {
+export async function manageUser(users: user[], condition: string, token: string, dispatch: any) {
     try {
         await axios.delete('http://localhost:3001/api/user/', {
             headers: {
                 authorization: `Bearer ${token}`,
             },
-            data: {users},
+            data: {users, condition},
         });
         dispatch(getUsers(token));
         dispatch(getAccounts());
