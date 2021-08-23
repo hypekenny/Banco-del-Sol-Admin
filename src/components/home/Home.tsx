@@ -26,11 +26,11 @@ export function All() {
         </button>
 
         <button className={styles.btn} onClick={() => setView("user")}>
-          USER
+          USUARIO
         </button>
 
         <button className={styles.btn} onClick={() => setView("acc")}>
-          ACCOUNT
+          CUENTA
         </button>
 
         <button className={styles.btn} onClick={() => setView("tran")}>

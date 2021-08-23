@@ -1,9 +1,16 @@
 .container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .chart {
-    margin: 20px;
-    padding: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.h1Estadisticas {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-size: 50px;
+  margin-left: 5%;
 }
