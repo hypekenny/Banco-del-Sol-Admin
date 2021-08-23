@@ -51,22 +51,51 @@
     padding: 20px;
     border-radius: 20px;
 }
-.disableBtn {
+.borderlessBtn {
     background-color: transparent;
     border: none;
 }
-.disableIcon {
-    width: 30px;
-    height: 30px;
-    color: red;
-}
-.updateIcon {
-    width: 30px;
-    height: 30px;
-    color: black;
-}
-/* .disableIcon:hover {
+.btnContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 50px;
     height: 50px;
-    transition: 0.1s all ease-in-out;
-} */
+}
+.updateBtn {
+    width: 25px;
+    height: 25px;
+    align-self: center;
+    cursor: pointer;
+}
+.updateBtn:hover {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+}
+.confirmBtn {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+    color: green;
+    cursor: pointer;
+}
+.confirmBtn:hover {
+    width: 45px;
+    height: 45px;
+    align-self: center;
+    color: lightgreen;
+}
+.closeBtn {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+    color: darkred;
+    cursor: pointer;
+}
+.closeBtn:hover {
+    width: 45px;
+    height: 45px;
+    align-self: center;
+    color: red;
+}
