@@ -10,7 +10,6 @@ export const SET_TOKEN = 'SET_TOKEN';
 
 export function createUser(user: any, address: any, password: string) {
     user.address = address;
-    console.log('dentro del index', user);
     return (dispatch: any) => {
         firebase
             .auth()
@@ -97,5 +96,9 @@ export function setToken(token: string) {
 }
 
 export async function updateTransaction(id: string, condition: string) {
-    await axios.post('http://localhost:3000/api2/transactions/update', {id, condition});
+    await axios.put('http://localhost:3000/api2/transactions', {id, condition});
+}
+
+export async function updateAccount(email: string, amount: number) {
+    await axios.put('http://localhost:3000/api2/account', {email, amount});
 }

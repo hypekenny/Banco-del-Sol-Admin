@@ -1,0 +1,53 @@
+.inputAmount {
+    border-radius: 20px;
+    font-size: 20px;
+    width: 150px;
+}
+.borderlessBtn {
+    background-color: transparent;
+    border: none;
+}
+.btnContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+.updateBtn {
+    width: 25px;
+    height: 25px;
+    align-self: center;
+    cursor: pointer;
+}
+.updateBtn:hover {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+}
+.confirmBtn {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+    color: green;
+    cursor: pointer;
+}
+.confirmBtn:hover {
+    width: 45px;
+    height: 45px;
+    align-self: center;
+    color: lightgreen;
+}
+.closeBtn {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+    color: darkred;
+    cursor: pointer;
+}
+.closeBtn:hover {
+    width: 45px;
+    height: 45px;
+    align-self: center;
+    color: red;
+}

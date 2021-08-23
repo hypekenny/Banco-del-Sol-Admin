@@ -7,6 +7,7 @@ import {useState} from 'react';
 import {createUser, getUsers, manageUser} from '../../redux/actions';
 import {useEffect} from 'react';
 import {MdDelete, MdDeleteForever, MdEdit} from 'react-icons/md';
+import {IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline} from 'react-icons/io';
 
 export function Users() {
     const allUsers = useSelector((state: rootState) => state.user);
@@ -18,6 +19,7 @@ export function Users() {
     const [password, setPassword] = useState('');
     const [disabled, setDisabled] = useState<user[]>([]);
     const [undisabled, setUndisabled] = useState<user[]>([]);
+    const [confirm, setConfirm] = useState({view: '', index: -1});
     const dispatch = useDispatch();
     const [view, setView] = useState('active');
 
@@ -67,10 +69,13 @@ export function Users() {
 
     function wipeData() {
         setView('active');
+        setConfirm({view: '', index: -1});
         setPassword('');
         setNewUser({email: '', name: '', lastName: '', dni: '', phoneNumber: '', birthdate: '', address: {}});
         setNewAddress({street: '', number: '', zipCode: '', city: '', province: ''});
     }
+
+    console.log('allUsers', allUsers);
 
     return (
         <div className={styles.container}>
@@ -78,7 +83,6 @@ export function Users() {
                 <button
                     className={constants.btn}
                     onClick={() => {
-                        setView('active');
                         wipeData();
                     }}
                 >
@@ -109,42 +113,85 @@ export function Users() {
                                         <label className={constants.text}>birthdate: {user.birthdate}</label>
                                     </div>
                                     {view === 'active' ? (
-                                        <div>
+                                        <div className={styles.btnContainer}>
                                             <button
-                                                className={styles.disableBtn}
+                                                className={styles.borderlessBtn}
                                                 onClick={() => {
                                                     setUserToUpdate(i);
                                                     setView('update');
                                                 }}
                                             >
-                                                <MdEdit className={styles.updateIcon} />
+                                                <MdEdit className={styles.updateBtn} />
                                             </button>
-                                            <button
-                                                className={styles.disableBtn}
-                                                onClick={() => {
-                                                    addDisabled(user);
-                                                    setTimeout(() => {
-                                                        handleDisabled();
-                                                    }, 500);
-                                                }}
-                                            >
-                                                <MdDelete className={styles.disableIcon} />
-                                            </button>
+                                            {confirm.view === 'disable' && confirm.index === i ? (
+                                                <div>
+                                                    <div className={styles.btnContainer}>
+                                                        <button
+                                                            className={styles.borderlessBtn}
+                                                            onClick={() => {
+                                                                addDisabled(user);
+                                                                setTimeout(() => {
+                                                                    handleDisabled();
+                                                                }, 500);
+                                                            }}
+                                                        >
+                                                            <IoIosCheckmarkCircleOutline
+                                                                className={styles.confirmBtn}
+                                                                onClick={() => setConfirm({view: '', index: -1})}
+                                                            />
+                                                        </button>
+                                                        <button className={styles.borderlessBtn} onClick={() => setConfirm({view: '', index: -1})}>
+                                                            <IoIosCloseCircleOutline className={styles.closeBtn} />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <button
+                                                    className={styles.borderlessBtn}
+                                                    onClick={() => {
+                                                        setConfirm({view: 'disable', index: i});
+                                                    }}
+                                                >
+                                                    <MdDelete className={styles.closeBtn} />
+                                                </button>
+                                            )}
                                         </div>
-                                    ) : null}
-                                    {view === 'disabled' ? (
-                                        <button
-                                            className={styles.disableBtn}
-                                            onClick={() => {
-                                                addUndisabled(user);
-                                                setTimeout(() => {
-                                                    handleUndisabled();
-                                                }, 500);
-                                            }}
-                                        >
-                                            <MdDeleteForever className={styles.disableIcon} />
-                                        </button>
-                                    ) : null}
+                                    ) : (
+                                        <div className={styles.btnContainer}>
+                                            {confirm.view === 'disable' && confirm.index === i ? (
+                                                <div>
+                                                    <div className={styles.btnContainer}>
+                                                        <button
+                                                            className={styles.borderlessBtn}
+                                                            onClick={() => {
+                                                                addUndisabled(user);
+                                                                setTimeout(() => {
+                                                                    handleUndisabled();
+                                                                }, 500);
+                                                            }}
+                                                        >
+                                                            <IoIosCheckmarkCircleOutline
+                                                                className={styles.confirmBtn}
+                                                                onClick={() => setConfirm({view: '', index: -1})}
+                                                            />
+                                                        </button>
+                                                        <button className={styles.borderlessBtn} onClick={() => setConfirm({view: '', index: -1})}>
+                                                            <IoIosCloseCircleOutline className={styles.closeBtn} />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <button
+                                                    className={styles.borderlessBtn}
+                                                    onClick={() => {
+                                                        setConfirm({view: 'disable', index: i});
+                                                    }}
+                                                >
+                                                    <MdDeleteForever className={styles.closeBtn} />
+                                                </button>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
                             ) : null
                         )}
