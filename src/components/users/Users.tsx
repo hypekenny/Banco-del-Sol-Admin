@@ -123,7 +123,6 @@ export function Users() {
                                             >
                                                 <MdEdit className={styles.updateBtn} />
                                             </button>
-                                            {/* confirm user buttons  */}
                                             {confirm.view === 'disable' && confirm.index === i ? (
                                                 <div>
                                                     <div className={styles.btnContainer}>
