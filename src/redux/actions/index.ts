@@ -10,7 +10,6 @@ export const SET_TOKEN = 'SET_TOKEN';
 
 export function createUser(user: any, address: any, password: string) {
     user.address = address;
-    console.log('dentro del index', user);
     return (dispatch: any) => {
         firebase
             .auth()
