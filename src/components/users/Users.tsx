@@ -81,20 +81,20 @@ export function Users() {
         <div className={styles.container}>
             <div className={styles.buttons}>
                 <button
-                    className={constants.btn}
+                    className={styles.btn}
                     onClick={() => {
                         wipeData();
                     }}
                 >
-                    active
+                    activo
                 </button>
 
-                <button className={constants.btn} onClick={() => setView('disabled')}>
-                    disabled
+                <button className={styles.btn} onClick={() => setView('disabled')}>
+                    deshabilitado
                 </button>
 
-                <button className={constants.btn} onClick={() => setView('create')}>
-                    create new
+                <button className={styles.btn} onClick={() => setView('create')}>
+                    crear nuevo
                 </button>
             </div>
             {view === 'active' || view === 'disabled' ? (
@@ -105,12 +105,12 @@ export function Users() {
                                 <div key={i} className={constants.card}>
                                     <div>
                                         <input className={styles.checkbox} type="checkbox"></input>
-                                        <label className={constants.text}>email: {user.email}</label>
-                                        <label className={constants.text}>name: {user.name}</label>
-                                        <label className={constants.text}>lastname: {user.lastName}</label>
-                                        <label className={constants.text}>dni: {user.dni}</label>
-                                        <label className={constants.text}>phonenumber: {user.phoneNumber}</label>
-                                        <label className={constants.text}>birthdate: {user.birthdate}</label>
+                                        <label className={constants.text}>Email: {user.email}</label>
+                                        <label className={constants.text}>Nombre: {user.name}</label>
+                                        <label className={constants.text}>Apellido: {user.lastName}</label>
+                                        <label className={constants.text}>Dni: {user.dni}</label>
+                                        <label className={constants.text}>Telefono: {user.phoneNumber}</label>
+                                        <label className={constants.text}>Fecha de nacimiento: {user.birthdate}</label>
                                     </div>
                                     {view === 'active' ? (
                                         <div className={styles.btnContainer}>

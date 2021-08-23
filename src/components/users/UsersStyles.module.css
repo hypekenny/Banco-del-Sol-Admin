@@ -8,9 +8,9 @@
     /* flex-direction: row; */
     align-self: center;
     /* background-color: aqua; */
-
     width: 50%;
     height: 20%;
+    margin-bottom: -8%;
 }
 .createContainer {
     display: flex;
@@ -54,15 +54,6 @@
     background-image: linear-gradient(#ff4b6e, #ff9349);
     padding: 20px;
     border-radius: 20px;
-}
-.disableBtn {
-    background-color: transparent;
-    border: none;
-}
-.disableIcon {
-    width: 30px;
-    height: 30px;
-    color: red;
 }
 .updateIcon {
     width: 30px;
