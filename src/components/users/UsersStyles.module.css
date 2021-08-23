@@ -1,73 +1,73 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  height: 98vh;
+    display: flex;
+    flex-direction: column;
+    height: 98vh;
 }
 .buttons {
-  display: flex;
-  /* flex-direction: row; */
-  align-self: center;
-  /* background-color: aqua; */
+    display: flex;
+    /* flex-direction: row; */
+    align-self: center;
+    /* background-color: aqua; */
 
-  width: 50%;
-  height: 20%;
+    width: 50%;
+    height: 20%;
 }
 .createContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 70%;
-  margin-left: -25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 70%;
+    margin-left: -25%;
 }
 .inputContainer {
-  display: flex;
-  flex-direction: column;
-  font-size: 25px;
-  margin: 1%;
-  width: 30%;
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    margin: 1%;
+    width: 30%;
 }
 .label {
-  display: flex;
-  flex-direction: row;
-  margin: 5%;
-  font-size: 25px;
-  justify-content: flex-end;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: 5%;
+    font-size: 25px;
+    justify-content: flex-end;
+    align-items: center;
 }
 .input {
-  font-size: 20px;
-  border-radius: 20px;
-  padding: 1%;
-  outline: none;
-  margin-left: 2%;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 1%;
+    outline: none;
+    margin-left: 2%;
 }
 .checkbox {
-  align-self: center;
-  width: 30px;
-  height: 30px;
+    align-self: center;
+    width: 30px;
+    height: 30px;
 }
 .createBtn {
-  margin-top: 15%;
-  margin-left: 25%;
-  width: 35%;
-  font-size: 150%;
-  background-image: linear-gradient(#ff4b6e, #ff9349);
-  padding: 20px;
-  border-radius: 20px;
+    margin-top: 15%;
+    margin-left: 25%;
+    width: 35%;
+    font-size: 150%;
+    background-image: linear-gradient(#ff4b6e, #ff9349);
+    padding: 20px;
+    border-radius: 20px;
 }
 .disableBtn {
-  background-color: transparent;
-  border: none;
+    background-color: transparent;
+    border: none;
 }
 .disableIcon {
-  width: 30px;
-  height: 30px;
-  color: red;
+    width: 30px;
+    height: 30px;
+    color: red;
 }
 .updateIcon {
-  width: 30px;
-  height: 30px;
-  color: black;
+    width: 30px;
+    height: 30px;
+    color: black;
 }
 /* .disableIcon:hover {
     width: 50px;
@@ -76,46 +76,94 @@
 } */
 
 .btn {
-  border: none;
-  direction: none;
-  align-self: center;
-  background-color: #ff756b;
-  border-radius: 50px;
-  width: 80%;
-  height: 25%;
-  /* border: 1px solid #000; */
+    border: none;
+    direction: none;
+    align-self: center;
+    background-color: #ff756b;
+    border-radius: 50px;
+    width: 80%;
+    height: 25%;
+    /* border: 1px solid #000; */
 
-  font-weight: 600;
-  font-stretch: extra-expanded;
-  /* box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    font-weight: 600;
+    font-stretch: extra-expanded;
+    /* box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
     rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
     rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px; */
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
 
-  font-size: 20px;
+    font-size: 20px;
 
-  color: #fff;
-  text-align: center;
+    color: #fff;
+    text-align: center;
 
-  font-family: "Quicksand", sans-serif;
-  font-weight: 700;
-  transition: 1s;
-  cursor: pointer;
-  font-size: 25px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    transition: 1s;
+    cursor: pointer;
+    font-size: 25px;
 
-  margin-top: -15%;
-  margin-left: 5%;
+    margin-top: -15%;
+    margin-left: 5%;
 }
 /* .btn ::selection {
   background-color: aqua;
 } */
 
 .btn:focus {
-  background-color: #f85c50;
-  border: 1px solid #e0584f;
+    background-color: #f85c50;
+    border: 1px solid #e0584f;
 }
 
 .btn:hover {
-  font-size: 21px;
-  transform: scale(1.1);
+    font-size: 21px;
+    transform: scale(1.1);
+}
+.borderlessBtn {
+    background-color: transparent;
+    border: none;
+}
+.btnContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+.updateBtn {
+    width: 25px;
+    height: 25px;
+    align-self: center;
+    cursor: pointer;
+}
+.updateBtn:hover {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+}
+.confirmBtn {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+    color: green;
+    cursor: pointer;
+}
+.confirmBtn:hover {
+    width: 45px;
+    height: 45px;
+    align-self: center;
+    color: lightgreen;
+}
+.closeBtn {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+    color: darkred;
+    cursor: pointer;
+}
+.closeBtn:hover {
+    width: 45px;
+    height: 45px;
+    align-self: center;
+    color: red;
 }
