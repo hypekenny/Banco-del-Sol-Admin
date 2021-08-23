@@ -69,6 +69,7 @@ export function Users() {
 
     function wipeData() {
         setView('active');
+        setConfirm({view: '', index: -1});
         setPassword('');
         setNewUser({email: '', name: '', lastName: '', dni: '', phoneNumber: '', birthdate: '', address: {}});
         setNewAddress({street: '', number: '', zipCode: '', city: '', province: ''});
@@ -82,7 +83,6 @@ export function Users() {
                 <button
                     className={constants.btn}
                     onClick={() => {
-                        setView('active');
                         wipeData();
                     }}
                 >
@@ -123,7 +123,7 @@ export function Users() {
                                             >
                                                 <MdEdit className={styles.updateBtn} />
                                             </button>
-                                            {confirm.view === 'edit' ? (
+                                            {confirm.view === 'disable' && confirm.index === i ? (
                                                 <div>
                                                     <div className={styles.btnContainer}>
                                                         <button
@@ -140,7 +140,7 @@ export function Users() {
                                                                 onClick={() => setConfirm({view: '', index: -1})}
                                                             />
                                                         </button>
-                                                        <button className={styles.borderlessBtn}>
+                                                        <button className={styles.borderlessBtn} onClick={() => setConfirm({view: '', index: -1})}>
                                                             <IoIosCloseCircleOutline className={styles.closeBtn} />
                                                         </button>
                                                     </div>
@@ -149,27 +149,49 @@ export function Users() {
                                                 <button
                                                     className={styles.borderlessBtn}
                                                     onClick={() => {
-                                                        setConfirm({view: 'edit', index: i});
+                                                        setConfirm({view: 'disable', index: i});
                                                     }}
                                                 >
                                                     <MdDelete className={styles.closeBtn} />
                                                 </button>
                                             )}
                                         </div>
-                                    ) : null}
-                                    {view === 'disabled' ? (
-                                        <button
-                                            className={styles.disableBtn}
-                                            onClick={() => {
-                                                addUndisabled(user);
-                                                setTimeout(() => {
-                                                    handleUndisabled();
-                                                }, 500);
-                                            }}
-                                        >
-                                            <MdDeleteForever className={styles.disableIcon} />
-                                        </button>
-                                    ) : null}
+                                    ) : (
+                                        <div className={styles.btnContainer}>
+                                            {confirm.view === 'disable' && confirm.index === i ? (
+                                                <div>
+                                                    <div className={styles.btnContainer}>
+                                                        <button
+                                                            className={styles.borderlessBtn}
+                                                            onClick={() => {
+                                                                addUndisabled(user);
+                                                                setTimeout(() => {
+                                                                    handleUndisabled();
+                                                                }, 500);
+                                                            }}
+                                                        >
+                                                            <IoIosCheckmarkCircleOutline
+                                                                className={styles.confirmBtn}
+                                                                onClick={() => setConfirm({view: '', index: -1})}
+                                                            />
+                                                        </button>
+                                                        <button className={styles.borderlessBtn} onClick={() => setConfirm({view: '', index: -1})}>
+                                                            <IoIosCloseCircleOutline className={styles.closeBtn} />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <button
+                                                    className={styles.borderlessBtn}
+                                                    onClick={() => {
+                                                        setConfirm({view: 'disable', index: i});
+                                                    }}
+                                                >
+                                                    <MdDeleteForever className={styles.closeBtn} />
+                                                </button>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
                             ) : null
                         )}
