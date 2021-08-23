@@ -4,6 +4,7 @@ import {rootState} from '../constants/types';
 import constants from '../constants/constants.module.css';
 import {getTransactions, updateTransaction} from '../../redux/actions';
 import {useState} from 'react';
+import {MdCached} from 'react-icons/md';
 
 export function Transactions() {
     const transactionsStore = useSelector((state: rootState) => state.transaction);
@@ -22,7 +23,7 @@ export function Transactions() {
             <div>
                 <h1>Transaction list</h1>
                 <button className={constants.btn} onClick={() => dispatch(getTransactions())}>
-                    reload
+                    <MdCached style={{width: 25, height: 25, alignSelf: 'center'}} />
                 </button>
                 <button className={constants.btn} onClick={() => setView('pending')}>
                     pending
