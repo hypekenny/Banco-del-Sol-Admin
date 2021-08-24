@@ -199,7 +199,7 @@ export function Data() {
                         <Tooltip />
                     </LineChart>
                     <div className={styles.textData}>
-                        <label>datos anuales</label>
+                        <label>datos mensuales</label>
                         <label>recargas: {monthlyData[index]?.recarga}</label>
                         <label>transferencias: {monthlyData[index]?.transferencia}</label>
                     </div>
