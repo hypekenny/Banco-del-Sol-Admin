@@ -20,10 +20,19 @@ export function Transactions() {
     }, 500);
   }
 
+  function empty(con: string) {
+    let empty = true;
+    transactionsStore.forEach((t) => {
+      if (con === "all" && t) empty = false;
+      if (t.condition === con) empty = false;
+    });
+    return empty;
+  }
+
   return (
     <div>
       <div>
-        <h1>Transaction list</h1>
+        <h1>Lista de transacciones</h1>
         <div className={style.buttons}>
           <button
             className={style.btn}
@@ -32,73 +41,22 @@ export function Transactions() {
             <MdCached style={{ width: 15, height: 15, alignSelf: "center" }} />
           </button>
           <button className={style.btn} onClick={() => setView("all")}>
-            All
+            Todas
           </button>
           <button className={style.btn} onClick={() => setView("pending")}>
-            Pending
+            Pendientes
           </button>
           <button className={style.btn} onClick={() => setView("completed")}>
-            Completed
+            Completadas
           </button>
           <button className={style.btn} onClick={() => setView("declined")}>
-            Declined
+            Rechazadas
           </button>
           <button className={style.btn} onClick={() => setView("failed")}>
-            Failed
+            Fallidas
           </button>
         </div>
       </div>
-
-      {/* <div className={constants.card}>
-        
-        <label className={style.text}>sender email</label>
-        <label className={style.text}>
-          receiver email
-        </label>
-        <label className={style.text}>value</label>
-        <label className={style.text}>type</label>
-        <label className={style.text}>comment</label>
-        <label className={style.text}>
-          date:
-        </label>
-        <label className={style.text}>
-          condition
-        </label>
-      </div>
-
-      {transactionsStore &&
-        transactionsStore.map((tran, i) =>
-          tran.condition === view || view === "all" ? (
-            <div key={i} className={constants.card}>
-              {tran.condition === "pending" ? (
-                <button onClick={() => handleUpdate(tran.id, "accepted")}>
-                  accept
-                </button>
-              ) : null}
-              {tran.condition === "pending" ? (
-                <button onClick={() => handleUpdate(tran.id, "declined")}>
-                  decline
-                </button>
-              ) : null}
-              <label className={style.text}>
-                sender email: {tran.senderEmail}
-              </label>
-              <label className={style.text}>
-                receiver email: {tran.receiverEmail}
-              </label>
-              <label className={style.text}>value: {tran.value}</label>
-              <label className={style.text}>type: {tran.type}</label>
-              <label className={style.text}>comment: {tran.comment}</label>
-              <label className={style.text}>
-                date: {tran.date.toString().split(" ").slice(0, 4).join(" ")}
-              </label>
-              <label className={style.text}>
-                condition:
-                <span className={style.text}>{tran.condition}</span>
-              </label>
-            </div>
-          ) : null
-        )} */}
 
       <div className={style.main}>
         <table>
@@ -114,11 +72,12 @@ export function Transactions() {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {/* <tr>
               <th className={style.filaUnica} colSpan={7}>
                 No se encontraton transacciones
               </th>
-            </tr>
+            </tr> */}
+
             {transactionsStore &&
               transactionsStore.map((tran, i) =>
                 tran.condition === view || view === "all" ? (
@@ -169,6 +128,13 @@ export function Transactions() {
                   </tr>
                 ) : null
               )}
+            {empty(view) ? (
+              <tr>
+                <th className={style.filaUnica} colSpan={7}>
+                  No se encontraton transacciones
+                </th>
+              </tr>
+            ) : null}
           </tbody>
         </table>
       </div>
