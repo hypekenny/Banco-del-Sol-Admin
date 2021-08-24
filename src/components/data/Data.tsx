@@ -172,8 +172,8 @@ export function Data() {
                     </LineChart>
                     <div className={styles.textData}>
                         <label>Datos anuales</label>
-                        <label>Recargas: {total.recharge}</label>
-                        <label>Transferencias: {total.transfer}</label>
+                        <label>Recargas: ${total.recharge}</label>
+                        <label>Transferencias: ${total.transfer}</label>
                     </div>
                 </div>
             </div>
@@ -200,8 +200,8 @@ export function Data() {
                     </LineChart>
                     <div className={styles.textData}>
                         <label>Datos mensuales</label>
-                        <label>Recargas: {monthlyData[index]?.recarga}</label>
-                        <label>Transferencias: {monthlyData[index]?.transferencia}</label>
+                        <label>Recargas: ${monthlyData[index]?.recarga}</label>
+                        <label>Transferencias: ${monthlyData[index]?.transferencia}</label>
                     </div>
                 </div>
             </div>
