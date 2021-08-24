@@ -78,7 +78,7 @@ export function Accounts() {
       </div> */}
       <div>
         <div>
-          <h1>Accounts list</h1>
+          <h1>Lista de cuentas</h1>
         </div>
         <div className={styles.main}>
           <table>
@@ -91,11 +91,14 @@ export function Accounts() {
               </tr>
             </thead>
             <tbody>
-              {/* <tr>
-              <th className={style.filaUnica} colSpan={7}>
-                No se encontraton cuentas
-              </th>
-            </tr> */}
+              {allAccounts.length === 0 ? (
+                <tr>
+                  <th className={styles.filaUnica} colSpan={7}>
+                    No se encontraton cuentas
+                  </th>
+                </tr>
+              ) : null}
+
               {allAccounts &&
                 allAccounts.map((acc, i) => (
                   <tr className={styles.fila}>

@@ -37,7 +37,7 @@ export function Users() {
   const [disabled, setDisabled] = useState<user[]>([]);
   const [undisabled, setUndisabled] = useState<user[]>([]);
   const dispatch = useDispatch();
-  const [view, setView] = useState("active");
+  const [view, setView] = useState("all");
 
   function handleChangeUser(e: any) {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
@@ -103,128 +103,143 @@ export function Users() {
       province: "",
     });
   }
+  function empty(con: string) {
+    let empty = true;
+    allUsers.forEach((u) => {
+      if (con === "all" && u) empty = false;
+      if (u.condition === con) empty = false;
+    });
+    return empty;
+  }
 
   return (
     <div className={styles.container}>
-      <div className={styles.buttons}>
-        <button
-          className={styles.btn}
-          onClick={() => {
-            setView("active");
-            wipeData();
-          }}
-        >
-          ACTIVE
-        </button>
+      {view === "all" || view === "active" || view === "disabled" ? (
+        <div className={styles.containerList}>
+          <div>
+            <h1>Lista de usuarios</h1>
+            <div className={styles.buttons}>
+              <button
+                className={styles.btn}
+                onClick={() => {
+                  setView("all");
+                  wipeData();
+                }}
+              >
+                Todos
+              </button>
+              <button
+                className={styles.btn}
+                onClick={() => {
+                  setView("active");
+                  wipeData();
+                }}
+              >
+                Activos
+              </button>
 
-        <button className={styles.btn} onClick={() => setView("disabled")}>
-          DISABLED
-        </button>
+              <button
+                className={styles.btn}
+                onClick={() => setView("disabled")}
+              >
+                Desactivados
+              </button>
 
-        <button className={styles.btn} onClick={() => setView("create")}>
-          CREATE NEW
-        </button>
-      </div>
-      {view === "active" || view === "disabled" ? (
-        <div>
-          {allUsers &&
-            allUsers.map((user, i) =>
-              user.condition === view ? (
-                <div key={i} className={constants.card}>
-                  <div>
-                    <input className={styles.checkbox} type="checkbox"></input>
-                    <label className={constants.text}>
-                      email: {user.email}
-                    </label>
-                    <label className={constants.text}>name: {user.name}</label>
-                    <label className={constants.text}>
-                      lastname: {user.lastName}
-                    </label>
-                    <label className={constants.text}>dni: {user.dni}</label>
-                    <label className={constants.text}>
-                      phonenumber: {user.phoneNumber}
-                    </label>
-                    <label className={constants.text}>
-                      birthdate: {user.birthdate}
-                    </label>
-                  </div>
-                  {view === "active" ? (
-                    <div>
-                      <button
-                        className={styles.disableBtn}
-                        onClick={() => {
-                          setUserToUpdate(i);
-                          setView("update");
-                        }}
-                      >
-                        <MdEdit className={styles.updateIcon} />
-                      </button>
-                      <button
-                        className={styles.disableBtn}
-                        onClick={() => {
-                          addDisabled(user);
-                          setTimeout(() => {
-                            handleDisabled();
-                          }, 500);
-                        }}
-                      >
-                        <MdDelete className={styles.disableIcon} />
-                      </button>
-                    </div>
-                  ) : null}
-                  {view === "disabled" ? (
-                    <button
-                      className={styles.disableBtn}
-                      onClick={() => {
-                        addUndisabled(user);
-                        setTimeout(() => {
-                          handleUndisabled();
-                        }, 500);
-                      }}
-                    >
-                      <MdDeleteForever className={styles.disableIcon} />
-                    </button>
-                  ) : null}
-                </div>
-              ) : null
-            )}
+              <button className={styles.btn} onClick={() => setView("create")}>
+                Crear Nuevo
+              </button>
+            </div>
+          </div>
+          <div className={styles.main}>
+            <table>
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>DNI</th>
+                  <th>Telefono</th>
+                  <th>Nacimiento</th>
+                  <th className={styles.ancho}>Condicion</th>
+                  <th>Editar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allUsers &&
+                  allUsers.map((user, i) =>
+                    user.condition === view || view === "all" ? (
+                      <tr className={styles.fila}>
+                        <td>{user.email}</td>
+                        <td>{user.name}</td>
+                        <td>{user.lastName}</td>
+                        <td>{user.dni}</td>
+                        <td>{user.phoneNumber}</td>
+                        <td>{user.birthdate}</td>
+                        <td>
+                          <div className={styles.condition}>
+                            <div>{user.condition}</div>
+                            {view === "active" ? (
+                              <div>
+                                <button
+                                  className={styles.disableBtn}
+                                  onClick={() => {
+                                    addDisabled(user);
+                                    setTimeout(() => {
+                                      handleDisabled();
+                                    }, 500);
+                                  }}
+                                >
+                                  <MdDelete className={styles.disableIcon} />
+                                </button>
+                              </div>
+                            ) : null}
+                            {view === "disabled" ? (
+                              <div>
+                                <button
+                                  className={styles.disableBtn}
+                                  onClick={() => {
+                                    addUndisabled(user);
+                                    setTimeout(() => {
+                                      handleUndisabled();
+                                    }, 500);
+                                  }}
+                                >
+                                  <MdDeleteForever
+                                    className={styles.disableIcon}
+                                  />
+                                </button>
+                              </div>
+                            ) : null}
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <button
+                              className={styles.disableBtn}
+                              onClick={() => {
+                                setUserToUpdate(i);
+                                setView("update");
+                              }}
+                            >
+                              <MdEdit className={styles.updateIcon} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ) : null
+                  )}
+                {empty(view) ? (
+                  <tr>
+                    <th className={styles.filaUnica} colSpan={8}>
+                      No se encontraton usuarios
+                    </th>
+                  </tr>
+                ) : null}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : null}
-
-      <div>
-        <h1>Users list</h1>
-      </div>
-      <div className={styles.main}>
-        <table>
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>DNI</th>
-              <th>Telefono</th>
-              <th>Nacimiento</th>
-              <th>Editar</th>
-              <th>Borrar</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allUsers &&
-              allUsers.map((user, i) =>
-                user.condition === view ? (
-                  <tr className={styles.fila}>
-                    <td>{user.email}</td>
-                    <td>{user.name}</td>
-                    <td>{user.lastName}</td>
-                    <td>{user.dni}</td>
-                    <td>{user.phoneNumber}</td>
-                    <td>{user.birthdate}</td>
-                  </tr>
-                ) : null
-              )}
-          </tbody>
-        </table>
-      </div>
 
       {view === "create" ? (
         <div className={styles.createContainer}>
