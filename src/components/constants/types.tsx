@@ -51,3 +51,17 @@ export interface rootState {
     transaction: transaction[];
     token: string;
 }
+
+export interface monthType {
+    name: string;
+    recarga: number;
+    transferencia: number;
+    dailyData: dayType[];
+    transactionsId: string[];
+}
+export interface dayType {
+    name: string;
+    number: number;
+    recarga: number;
+    transferencia: number;
+}
