@@ -1,11 +1,13 @@
 .inputAmount {
   border-radius: 20px;
   font-size: 20px;
-  width: 100px;
+  width: 70px;
 }
 .borderlessBtn {
   background-color: transparent;
   border: none;
+  margin: 0;
+  padding: 0;
 }
 .btnContainer {
   display: flex;
@@ -171,7 +173,7 @@ table td:first-child {
   width: 40%;
 }
 table td:nth-child(2) {
-  width: 25%;
+  width: 20%;
   text-align: center;
 }
 table td:nth-child(3) {
@@ -179,5 +181,5 @@ table td:nth-child(3) {
   text-align: center;
 }
 table td:last-child {
-  width: 25%;
+  width: 30%;
 }

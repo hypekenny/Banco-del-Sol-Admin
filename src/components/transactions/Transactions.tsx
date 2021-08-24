@@ -114,11 +114,11 @@ export function Transactions() {
             </tr>
           </thead>
           <tbody>
-            {/* <tr>
+            <tr>
               <th className={style.filaUnica} colSpan={7}>
                 No se encontraton transacciones
               </th>
-            </tr> */}
+            </tr>
             {transactionsStore &&
               transactionsStore.map((tran, i) =>
                 tran.condition === view || view === "all" ? (
