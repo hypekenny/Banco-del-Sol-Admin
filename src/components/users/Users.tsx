@@ -35,6 +35,7 @@ export function Users() {
     const [undisabled, setUndisabled] = useState<user[]>([]);
     const dispatch = useDispatch();
     const [view, setView] = useState('all');
+    const [confirm, setConfirm] = useState('all');
 
     function handleChangeUser(e: any) {
         setNewUser({...newUser, [e.target.name]: e.target.value});
@@ -81,7 +82,7 @@ export function Users() {
     }, [allUsers]);
 
     function wipeData() {
-        setView('active');
+        setView('all');
         setPassword('');
         setNewUser({
             email: '',
@@ -119,7 +120,6 @@ export function Users() {
                             <button
                                 className={styles.btn}
                                 onClick={() => {
-                                    setView('all');
                                     wipeData();
                                 }}
                             >
@@ -129,7 +129,6 @@ export function Users() {
                                 className={styles.btn}
                                 onClick={() => {
                                     setView('active');
-                                    wipeData();
                                 }}
                             >
                                 Activos

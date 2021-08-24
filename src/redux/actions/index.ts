@@ -40,7 +40,6 @@ export function getUsers(token: string) {
                 },
             })
             .then((response) => {
-                console.log('trajo cosas');
                 dispatch({
                     type: SET_USERS,
                     payload: response.data,
@@ -72,19 +71,24 @@ export function getTransactions() {
     };
 }
 
-export async function manageUser(users: user[], condition: string, token: string, dispatch: any) {
-    try {
-        await axios.delete('http://localhost:3001/api/user/', {
+export function manageUser(users: user[], condition: string, token: string, dispatch: any) {
+    axios
+        .delete('http://localhost:3001/api/user/', {
             headers: {
                 authorization: `Bearer ${token}`,
             },
             data: {users, condition},
+        })
+        .then((response) => {
+            dispatch({
+                type: SET_USERS,
+                payload: response.data.users,
+            });
+            dispatch({
+                type: SET_ACCOUNTS,
+                payload: response.data.accounts,
+            });
         });
-        dispatch(getUsers(token));
-        dispatch(getAccounts());
-    } catch (error) {
-        console.log(error);
-    }
 }
 
 export function setToken(token: string) {
