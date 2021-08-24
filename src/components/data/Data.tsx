@@ -171,9 +171,9 @@ export function Data() {
                         <Tooltip />
                     </LineChart>
                     <div className={styles.textData}>
-                        <label>datos anuales</label>
-                        <label>recargas: {total.recharge}</label>
-                        <label>transferencias: {total.transfer}</label>
+                        <label>Datos anuales</label>
+                        <label>Recargas: {total.recharge}</label>
+                        <label>Transferencias: {total.transfer}</label>
                     </div>
                 </div>
             </div>
@@ -199,9 +199,9 @@ export function Data() {
                         <Tooltip />
                     </LineChart>
                     <div className={styles.textData}>
-                        <label>datos mensuales</label>
-                        <label>recargas: {monthlyData[index]?.recarga}</label>
-                        <label>transferencias: {monthlyData[index]?.transferencia}</label>
+                        <label>Datos mensuales</label>
+                        <label>Recargas: {monthlyData[index]?.recarga}</label>
+                        <label>Transferencias: {monthlyData[index]?.transferencia}</label>
                     </div>
                 </div>
             </div>
