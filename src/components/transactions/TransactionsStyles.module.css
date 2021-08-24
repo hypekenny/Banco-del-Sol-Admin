@@ -68,7 +68,7 @@ h1 {
   position: relative;
   z-index: 1;
   overflow: scroll;
-  height: 490px;
+  height: 80vh;
 }
 table {
   border-radius: 3px; /* 
