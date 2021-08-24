@@ -190,6 +190,42 @@ export function Users() {
             )}
         </div>
       ) : null}
+
+      <div>
+        <h1>Users list</h1>
+      </div>
+      <div className={styles.main}>
+        <table>
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>DNI</th>
+              <th>Telefono</th>
+              <th>Nacimiento</th>
+              <th>Editar</th>
+              <th>Borrar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allUsers &&
+              allUsers.map((user, i) =>
+                user.condition === view ? (
+                  <tr className={styles.fila}>
+                    <td>{user.email}</td>
+                    <td>{user.name}</td>
+                    <td>{user.lastName}</td>
+                    <td>{user.dni}</td>
+                    <td>{user.phoneNumber}</td>
+                    <td>{user.birthdate}</td>
+                  </tr>
+                ) : null
+              )}
+          </tbody>
+        </table>
+      </div>
+
       {view === "create" ? (
         <div className={styles.createContainer}>
           <div className={styles.inputContainer}>
