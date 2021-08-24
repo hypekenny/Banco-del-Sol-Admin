@@ -32,20 +32,21 @@ export function createUser(user: any, address: any, password: string) {
 }
 
 export function getUsers(token: string) {
-    return async (dispatch: any) => {
-        try {
-            const response = await axios.get('http://localhost:3001/api/user/all', {
+    return (dispatch: any) => {
+        axios
+            .get('http://localhost:3001/api/user/all', {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
-            });
-            dispatch({
-                type: SET_USERS,
-                payload: response.data,
-            });
-        } catch (error) {
-            console.log(error);
-        }
+            })
+            .then((response) => {
+                console.log('trajo cosas');
+                dispatch({
+                    type: SET_USERS,
+                    payload: response.data,
+                });
+            })
+            .catch((error) => console.log(error));
     };
 }
 export function getAccounts() {
