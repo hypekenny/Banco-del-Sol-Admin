@@ -24,55 +24,116 @@ export function Accounts() {
     }
     return (
         <div>
-            <div>
-                {allAccounts &&
-                    allAccounts.map((acc, i) => (
-                        <div key={i} className={constants.card}>
-                            <label className={constants.text}>email: {acc.email}</label>
-                            <label className={constants.text}>cvu: {acc.cvu}</label>
-                            {view.index !== i ? <label className={constants.text}>balance: {acc.balance && acc.balance.amount}</label> : null}
-                            {view.view === 'edit' && view.index === i ? (
-                                confirm ? (
-                                    <div className={styles.btnContainer}>
-                                        <div>
-                                            <input
-                                                type="number"
-                                                name="amount"
-                                                className={styles.inputAmount}
-                                                onChange={(e) => setAmount(parseInt(e.target.value))}
-                                            />
-                                        </div>
-                                        <button className={styles.borderlessBtn} onClick={() => handleUpdate(acc.email, amount)}>
-                                            <IoIosCheckmarkCircleOutline className={styles.confirmBtn} />
-                                        </button>
-                                        <button className={styles.borderlessBtn} onClick={() => setView({view: '', index: -1})}>
-                                            <IoIosCloseCircleOutline className={styles.closeBtn} />
-                                        </button>
-                                    </div>
-                                ) : null
-                            ) : (
-                                <button className={styles.borderlessBtn} onClick={() => setView({view: 'edit', index: i})}>
-                                    <MdEdit className={styles.updateBtn} />
-                                </button>
-                            )}
-                        </div>
-                    ))}
+            {/* <div>
+        {allAccounts &&
+          allAccounts.map((acc, i) => (
+            <div key={i} className={constants.card}>
+              <label className={constants.text}>email: {acc.email}</label>
+              <label className={constants.text}>cvu: {acc.cvu}</label>
+              {view.index !== i ? (
+                <label className={constants.text}>
+                  amount: {acc.balance && acc.balance.amount}
+                </label>
+              ) : null}
+              {view.view === "edit" && view.index === i ? (
+                confirm ? (
+                  <div className={styles.btnContainer}>
+                    <div>
+                      <input
+                        type="number"
+                        name="amount"
+                        className={styles.inputAmount}
+                        onChange={(e) => setAmount(parseInt(e.target.value))}
+                      />
+                    </div>
+                    <button
+                      className={styles.borderlessBtn}
+                      onClick={() => handleUpdate(acc.email, amount)}
+                    >
+                      <IoIosCheckmarkCircleOutline
+                        className={styles.confirmBtn}
+                      />
+                    </button>
+                    <button
+                      className={styles.borderlessBtn}
+                      onClick={() => setView({ view: "", index: -1 })}
+                    >
+                      <IoIosCloseCircleOutline className={styles.closeBtn} />
+                    </button>
+                  </div>
+                ) : null
+              ) : (
+                <button
+                  className={styles.borderlessBtn}
+                  onClick={() => setView({ view: "edit", index: i })}
+                >
+                  <MdEdit className={styles.updateBtn} />
+                </button>
+              )}
             </div>
+          ))}
+      </div> */}
+            <div>
+                <div>
+                    <h1>Accounts list</h1>
+                </div>
+                <div className={styles.main}>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>CVU</th>
+                                <th>Amount</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* <tr>
+              <th className={style.filaUnica} colSpan={7}>
+                No se encontraton cuentas
+              </th>
+            </tr> */}
+                            {allAccounts &&
+                                allAccounts.map((acc, i) => (
+                                    <tr className={styles.fila}>
+                                        <td>{acc.email}</td>
+                                        <td>{acc.cvu}</td>
+                                        <td>{acc.balance && acc.balance.amount}</td>
+                                        <td>
+                                            <div className={styles.amount}>
+                                                {view.view === 'edit' && view.index === i ? (
+                                                    confirm ? (
+                                                        <div className={styles.btnContainer}>
+                                                            <div>
+                                                                <input
+                                                                    type="number"
+                                                                    name="amount"
+                                                                    className={styles.inputAmount}
+                                                                    onChange={(e) => setAmount(parseInt(e.target.value))}
+                                                                />
+                                                            </div>
+                                                            <button className={styles.borderlessBtn} onClick={() => handleUpdate(acc.email, amount)}>
+                                                                <IoIosCheckmarkCircleOutline className={styles.confirmBtn} />
+                                                            </button>
+                                                            <button className={styles.borderlessBtn} onClick={() => setView({view: '', index: -1})}>
+                                                                <IoIosCloseCircleOutline className={styles.closeBtn} />
+                                                            </button>
+                                                        </div>
+                                                    ) : null
+                                                ) : (
+                                                    <button className={styles.borderlessBtn} onClick={() => setView({view: 'edit', index: i})}>
+                                                        <MdEdit className={styles.updateBtn} />
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            ;
         </div>
     );
 }
-
-// {view === 'edit' ? (
-//     <button className={styles.borderlessBtn}>
-//         <MdEdit style={{width: 25, height: 25, alignSelf: 'center'}} />
-//     </button>
-// ) : confirm ? (
-//     <div>
-//         <button className={styles.borderlessBtn}>
-//             <MdEdit style={{width: 25, height: 25, alignSelf: 'center'}} />
-//         </button>
-//         <button className={styles.borderlessBtn}>
-//             <MdHighlightOff style={{width: 25, height: 25, alignSelf: 'center'}} />
-//         </button>
-//     </div>
-// ) : null}

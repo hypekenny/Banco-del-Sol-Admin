@@ -78,125 +78,42 @@ export function Users() {
     console.log('allUsers', allUsers);
 
     return (
-        <div className={styles.container}>
-            <div className={styles.buttons}>
-                <button
-                    className={styles.btn}
-                    onClick={() => {
-                        wipeData();
-                    }}
-                >
-                    activo
-                </button>
-
-                <button className={styles.btn} onClick={() => setView('disabled')}>
-                    deshabilitado
-                </button>
-
-                <button className={styles.btn} onClick={() => setView('create')}>
-                    crear nuevo
-                </button>
+        <div>
+            <div>
+                <h1>Users list</h1>
             </div>
-            {view === 'active' || view === 'disabled' ? (
-                <div>
-                    {allUsers &&
-                        allUsers.map((user, i) =>
-                            user.condition === view ? (
-                                <div key={i} className={constants.card}>
-                                    <div>
-                                        <input className={styles.checkbox} type="checkbox"></input>
-                                        <label className={constants.text}>Email: {user.email}</label>
-                                        <label className={constants.text}>Nombre: {user.name}</label>
-                                        <label className={constants.text}>Apellido: {user.lastName}</label>
-                                        <label className={constants.text}>Dni: {user.dni}</label>
-                                        <label className={constants.text}>Telefono: {user.phoneNumber}</label>
-                                        <label className={constants.text}>Fecha de nacimiento: {user.birthdate}</label>
-                                    </div>
-                                    {view === 'active' ? (
-                                        <div className={styles.btnContainer}>
-                                            <button
-                                                className={styles.borderlessBtn}
-                                                onClick={() => {
-                                                    setUserToUpdate(i);
-                                                    setView('update');
-                                                }}
-                                            >
-                                                <MdEdit className={styles.updateBtn} />
-                                            </button>
-                                            {confirm.view === 'disable' && confirm.index === i ? (
-                                                <div>
-                                                    <div className={styles.btnContainer}>
-                                                        <button
-                                                            className={styles.borderlessBtn}
-                                                            onClick={() => {
-                                                                addDisabled(user);
-                                                                setTimeout(() => {
-                                                                    handleDisabled();
-                                                                }, 500);
-                                                            }}
-                                                        >
-                                                            <IoIosCheckmarkCircleOutline
-                                                                className={styles.confirmBtn}
-                                                                onClick={() => setConfirm({view: '', index: -1})}
-                                                            />
-                                                        </button>
-                                                        <button className={styles.borderlessBtn} onClick={() => setConfirm({view: '', index: -1})}>
-                                                            <IoIosCloseCircleOutline className={styles.closeBtn} />
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            ) : (
-                                                <button
-                                                    className={styles.borderlessBtn}
-                                                    onClick={() => {
-                                                        setConfirm({view: 'disable', index: i});
-                                                    }}
-                                                >
-                                                    <MdDelete className={styles.closeBtn} />
-                                                </button>
-                                            )}
-                                        </div>
-                                    ) : (
-                                        <div className={styles.btnContainer}>
-                                            {confirm.view === 'disable' && confirm.index === i ? (
-                                                <div>
-                                                    <div className={styles.btnContainer}>
-                                                        <button
-                                                            className={styles.borderlessBtn}
-                                                            onClick={() => {
-                                                                addUndisabled(user);
-                                                                setTimeout(() => {
-                                                                    handleUndisabled();
-                                                                }, 500);
-                                                            }}
-                                                        >
-                                                            <IoIosCheckmarkCircleOutline
-                                                                className={styles.confirmBtn}
-                                                                onClick={() => setConfirm({view: '', index: -1})}
-                                                            />
-                                                        </button>
-                                                        <button className={styles.borderlessBtn} onClick={() => setConfirm({view: '', index: -1})}>
-                                                            <IoIosCloseCircleOutline className={styles.closeBtn} />
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            ) : (
-                                                <button
-                                                    className={styles.borderlessBtn}
-                                                    onClick={() => {
-                                                        setConfirm({view: 'disable', index: i});
-                                                    }}
-                                                >
-                                                    <MdDeleteForever className={styles.closeBtn} />
-                                                </button>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
-                            ) : null
-                        )}
-                </div>
-            ) : null}
+            <div className={styles.main}>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>DNI</th>
+                            <th>Telefono</th>
+                            <th>Nacimiento</th>
+                            <th>Editar</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {allUsers &&
+                            allUsers.map((user, i) =>
+                                user.condition === view ? (
+                                    <tr className={styles.fila}>
+                                        <td>{user.email}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.lastName}</td>
+                                        <td>{user.dni}</td>
+                                        <td>{user.phoneNumber}</td>
+                                        <td>{user.birthdate}</td>
+                                    </tr>
+                                ) : null
+                            )}
+                    </tbody>
+                </table>
+            </div>
+
             {view === 'create' ? (
                 <div className={styles.createContainer}>
                     <div className={styles.inputContainer}>
