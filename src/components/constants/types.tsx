@@ -25,6 +25,7 @@ export interface account {
     email: string;
     cvu: string;
     balance: balance;
+    condition: string;
 }
 
 export interface address {
@@ -50,6 +51,7 @@ export interface rootState {
     account: account[];
     transaction: transaction[];
     token: string;
+    loged: boolean;
 }
 
 export interface monthType {

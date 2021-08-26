@@ -1,14 +1,16 @@
 import React from 'react';
 import styles from './HomeStyles.module.css';
 import {Users} from '../users/Users';
-import {Accounts} from '../accounts/Accounts';
 import {Transactions} from '../transactions/Transactions';
 import {useState} from 'react';
 import {Data} from '../data/Data';
 import {Welcome} from '../welcome/Welcome';
+import {useSelector} from 'react-redux';
+import {rootState} from '../constants/types';
 
-export function All() {
+export function Home() {
     const [view, setView] = useState('welcome');
+    const loged = useSelector((state: rootState) => state.loged);
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>
@@ -20,28 +22,28 @@ export function All() {
                     />
                 </div>
                 <div className={styles.elipse}></div>
+                {loged ? null : <div onClick={() => alert('inicia sesion para utilizar la aplicacion')} className={styles.notLoged} />}
 
                 <button className={styles.btn} onClick={() => setView('data')}>
                     DATA
                 </button>
 
                 <button className={styles.btn} onClick={() => setView('user')}>
-                    USUARIO
-                </button>
-
-                <button className={styles.btn} onClick={() => setView('acc')}>
-                    CUENTA
+                    USUARIOS
                 </button>
 
                 <button className={styles.btn} onClick={() => setView('tran')}>
                     TRANSACCIONES
+                </button>
+
+                <button className={styles.btn} onClick={() => setView('about')}>
+                    ACERCA DE
                 </button>
             </div>
             <div className={styles.information}>
                 {view === 'welcome' ? <Welcome /> : null}
                 {view === 'data' ? <Data /> : null}
                 {view === 'user' ? <Users /> : null}
-                {view === 'acc' ? <Accounts /> : null}
                 {view === 'tran' ? <Transactions /> : null}
             </div>
         </div>
