@@ -6,9 +6,12 @@ import {Transactions} from '../transactions/Transactions';
 import {useState} from 'react';
 import {Data} from '../data/Data';
 import {Welcome} from '../welcome/Welcome';
+import {useSelector} from 'react-redux';
+import {rootState} from '../constants/types';
 
 export function All() {
     const [view, setView] = useState('welcome');
+    const loged = useSelector((state: rootState) => state.loged);
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>
@@ -20,6 +23,7 @@ export function All() {
                     />
                 </div>
                 <div className={styles.elipse}></div>
+                {loged ? null : <div onClick={() => alert('inicia sesion para utilizar la aplicacion')} className={styles.notLoged} />}
 
                 <button className={styles.btn} onClick={() => setView('data')}>
                     DATA
