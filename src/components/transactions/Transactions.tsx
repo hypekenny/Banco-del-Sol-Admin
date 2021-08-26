@@ -12,7 +12,7 @@ export function Transactions() {
     const dispatch = useDispatch();
 
     function handleUpdate(id: string, condition: string) {
-        updateTransaction(id, condition);
+        dispatch(updateTransaction(id, condition));
     }
 
     function empty(con: string) {
