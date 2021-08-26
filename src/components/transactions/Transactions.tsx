@@ -8,7 +8,7 @@ import style from './TransactionsStyles.module.css';
 
 export function Transactions() {
     const transactionsStore = useSelector((state: rootState) => state.transaction);
-    const [view, setView] = useState('all');
+    const [view, setView] = useState('completed');
     const dispatch = useDispatch();
 
     function handleUpdate(id: string, condition: string) {
@@ -18,7 +18,7 @@ export function Transactions() {
     function empty(con: string) {
         let empty = true;
         transactionsStore.forEach((t) => {
-            if (con === 'all' && t) empty = false;
+            if (con === 'completed' && t) empty = false;
             if (t.condition === con) empty = false;
         });
         return empty;
@@ -32,14 +32,11 @@ export function Transactions() {
                     <button className={style.btn} onClick={() => dispatch(getTransactions())}>
                         <MdCached style={{width: 15, height: 15, alignSelf: 'center'}} />
                     </button>
-                    <button className={style.btn} onClick={() => setView('all')}>
-                        Todas
+                    <button className={style.btn} onClick={() => setView('completed')}>
+                        Completadas
                     </button>
                     <button className={style.btn} onClick={() => setView('pending')}>
                         Pendientes
-                    </button>
-                    <button className={style.btn} onClick={() => setView('completed')}>
-                        Completadas
                     </button>
                     <button className={style.btn} onClick={() => setView('declined')}>
                         Rechazadas
@@ -64,22 +61,16 @@ export function Transactions() {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* <tr>
-              <th className={style.filaUnica} colSpan={7}>
-                No se encontraton transacciones
-              </th>
-            </tr> */}
-
                         {transactionsStore &&
                             transactionsStore.map((tran, i) =>
-                                tran.condition === view || view === 'all' ? (
+                                tran.condition === view ? (
                                     <tr className={style.fila}>
                                         <td>{tran.senderEmail}</td>
                                         <td>{tran.receiverEmail}</td>
                                         <td>{tran.value}</td>
                                         <td>{tran.type}</td>
                                         <td>{tran.comment}</td>
-                                        <td>{tran.date.toString().split(' ').slice(0, 4).join(' ')}</td>
+                                        <td>{tran.date.toString().split(' ').slice(0, 5).join(' ')}</td>
                                         <td>
                                             <div className={style.pending}>
                                                 {tran.condition}
