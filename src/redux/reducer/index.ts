@@ -1,11 +1,12 @@
 import {action, rootState} from '../../components/constants/types';
-import {SET_ACCOUNTS, SET_TRANSACTIONS, SET_USERS, SET_TOKEN} from '../actions';
+import {SET_ACCOUNTS, SET_TRANSACTIONS, SET_USERS, SET_TOKEN, LOGIN} from '../actions';
 
 const initialState: rootState = {
     user: [],
     account: [],
     transaction: [],
     token: '',
+    loged: false,
 };
 
 export default function rootReducer(state = initialState, action: action) {
@@ -29,6 +30,11 @@ export default function rootReducer(state = initialState, action: action) {
             return {
                 ...state,
                 token: action.payload,
+            };
+        case LOGIN:
+            return {
+                ...state,
+                loged: action.payload,
             };
         default:
             return {...state};
