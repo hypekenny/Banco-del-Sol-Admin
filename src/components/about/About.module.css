@@ -26,10 +26,12 @@
 .card {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  margin: 8px;
-  width: 30%;
-  height: 20%;
+  margin: 14px;
+  width: 20%;
+  height: 270px;
   /* background-color: red; */
+
+  transition: 1s;
 }
 
 .containerTwo {
@@ -42,7 +44,8 @@
 .TitleH2 {
   font-size: 20px;
   font-weight: 500;
-  margin-left: 10%;
+
+  text-align: center;
 }
 .button {
   border: none;
@@ -54,4 +57,37 @@
   text-align: center;
   cursor: pointer;
   width: 100%;
+}
+
+.iconLinkedin {
+  width: 35%;
+  height: 35%;
+  color: #0a66c2;
+  margin-left: 10%;
+  margin-right: -5%;
+
+  transition: 1s;
+}
+
+.iconGit {
+  width: 35%;
+  height: 35%;
+  color: #22272e;
+  margin-left: 20%;
+
+  transition: 1s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+
+  /* border: 1px solid #000; */
+}
+
+.iconLinkedin:hover {
+  transform: scale(1.5);
+}
+
+.iconGit:hover {
+  transform: scale(1.5);
 }

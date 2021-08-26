@@ -20,24 +20,48 @@ export const About = () => {
     window.open("https://www.linkedin.com/in/marcos-albarado-7b337820b/");
   }
 
+  function linkMarcosGit() {
+    window.open("https://github.com/GRIYO35");
+  }
+
   function linkNico() {
     window.open("https://www.linkedin.com/in/nicolas-cardone/");
+  }
+
+  function linkNicoGit() {
+    window.open("https://github.com/enodrac");
   }
 
   function linkEze() {
     window.open("https://www.linkedin.com/in/ezequieldecunto/");
   }
 
+  function linkEzeGit() {
+    window.open("https://github.com/Pinidecu");
+  }
+
   function linkSan() {
     window.open("https://www.linkedin.com/in/santiago-ferro-fullstack/");
+  }
+
+  function linkSanGit() {
+    window.open("https://github.com/hypekenny");
   }
 
   function linkRodri() {
     window.open("https://www.linkedin.com/in/rodrigolopezsmz/");
   }
 
+  function linkRodriGit() {
+    window.open("https://github.com/rodrigolopsmz");
+  }
+
   function linkKevin() {
     window.open("https://www.linkedin.com/in/kevin-arian/");
+  }
+
+  function linkKevinGit() {
+    window.open("https://github.com/Vashomaru");
   }
 
   function linkSeba() {
@@ -50,6 +74,10 @@ export const About = () => {
 
   function linkVeiga() {
     window.open("https://www.linkedin.com/in/santiagoveiga46/");
+  }
+
+  function linkVeigaGit() {
+    window.open("https://github.com/sajave");
   }
 
   return (
@@ -76,6 +104,11 @@ export const About = () => {
             <div
               style={{
                 marginBottom: "3%",
+                // background: "red",
+                alignSelf: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "80px",
               }}
             >
               <a
@@ -84,15 +117,7 @@ export const About = () => {
                   cursor: "pointer",
                 }}
               >
-                <AiFillLinkedin
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#0A66C2",
-                    marginLeft: "10%",
-                    marginRight: "-13%",
-                  }}
-                />
+                <AiFillLinkedin className={styles.iconLinkedin} />
               </a>
               <a
                 onClick={linkSebaGit}
@@ -100,14 +125,7 @@ export const About = () => {
                   cursor: "pointer",
                 }}
               >
-                <AiFillGithub
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#22272E",
-                    marginLeft: "20%",
-                  }}
-                />
+                <AiFillGithub className={styles.iconGit} />
               </a>
             </div>
           </div>
@@ -130,38 +148,28 @@ export const About = () => {
             <div
               style={{
                 marginBottom: "3%",
+                // background: "red",
+                alignSelf: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "80px",
               }}
             >
               <a
-                onClick={linkSeba}
+                onClick={linkVeiga}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillLinkedin
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#0A66C2",
-                    marginLeft: "10%",
-                    marginRight: "-13%",
-                  }}
-                />
+                <AiFillLinkedin className={styles.iconLinkedin} />
               </a>
               <a
-                onClick={linkSebaGit}
+                onClick={linkVeigaGit}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillGithub
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#22272E",
-                    marginLeft: "20%",
-                  }}
-                />
+                <AiFillGithub className={styles.iconGit} />
               </a>
             </div>
           </div>
@@ -184,38 +192,28 @@ export const About = () => {
             <div
               style={{
                 marginBottom: "3%",
+                // background: "red",
+                alignSelf: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "80px",
               }}
             >
               <a
-                onClick={linkSeba}
+                onClick={linkSan}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillLinkedin
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#0A66C2",
-                    marginLeft: "10%",
-                    marginRight: "-13%",
-                  }}
-                />
+                <AiFillLinkedin className={styles.iconLinkedin} />
               </a>
               <a
-                onClick={linkSebaGit}
+                onClick={linkSanGit}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillGithub
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#22272E",
-                    marginLeft: "20%",
-                  }}
-                />
+                <AiFillGithub className={styles.iconGit} />
               </a>
             </div>
           </div>
@@ -233,43 +231,33 @@ export const About = () => {
             }}
           />
           <div className={styles.containerTwo}>
-            <h2 className={styles.TitleH2}>Nicolas Cardone</h2>
+            <h2 className={styles.TitleH2}>Nicolás Cardone</h2>
 
             <div
               style={{
                 marginBottom: "3%",
+                // background: "red",
+                alignSelf: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "80px",
               }}
             >
               <a
-                onClick={linkSeba}
+                onClick={linkNico}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillLinkedin
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#0A66C2",
-                    marginLeft: "10%",
-                    marginRight: "-13%",
-                  }}
-                />
+                <AiFillLinkedin className={styles.iconLinkedin} />
               </a>
               <a
-                onClick={linkSebaGit}
+                onClick={linkNicoGit}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillGithub
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#22272E",
-                    marginLeft: "20%",
-                  }}
-                />
+                <AiFillGithub className={styles.iconGit} />
               </a>
             </div>
           </div>
@@ -292,146 +280,28 @@ export const About = () => {
             <div
               style={{
                 marginBottom: "3%",
+                // background: "red",
+                alignSelf: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "80px",
               }}
             >
               <a
-                onClick={linkSeba}
+                onClick={linkKevin}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillLinkedin
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#0A66C2",
-                    marginLeft: "10%",
-                    marginRight: "-13%",
-                  }}
-                />
+                <AiFillLinkedin className={styles.iconLinkedin} />
               </a>
               <a
-                onClick={linkSebaGit}
+                onClick={linkKevinGit}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillGithub
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#22272E",
-                    marginLeft: "20%",
-                  }}
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.card}>
-          <img
-            src={Ezequiel}
-            alt="Mike"
-            style={{
-              width: "70%",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-              marginLeft: "15%",
-              marginTop: "3%",
-            }}
-          />
-          <div className={styles.containerTwo}>
-            <h2 className={styles.TitleH2}>Ezequiel De Cunto</h2>
-
-            <div
-              style={{
-                marginBottom: "3%",
-              }}
-            >
-              <a
-                onClick={linkSeba}
-                style={{
-                  cursor: "pointer",
-                }}
-              >
-                <AiFillLinkedin
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#0A66C2",
-                    marginLeft: "10%",
-                    marginRight: "-13%",
-                  }}
-                />
-              </a>
-              <a
-                onClick={linkSebaGit}
-                style={{
-                  cursor: "pointer",
-                }}
-              >
-                <AiFillGithub
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#22272E",
-                    marginLeft: "20%",
-                  }}
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.card}>
-          <img
-            src={Rodrigo}
-            alt="Mike"
-            style={{
-              width: "70%",
-              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-              marginLeft: "15%",
-              marginTop: "3%",
-            }}
-          />
-          <div className={styles.containerTwo}>
-            <h2 className={styles.TitleH2}>Rodrigo Lopez</h2>
-
-            <div
-              style={{
-                marginBottom: "3%",
-              }}
-            >
-              <a
-                onClick={linkSeba}
-                style={{
-                  cursor: "pointer",
-                }}
-              >
-                <AiFillLinkedin
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#0A66C2",
-                    marginLeft: "10%",
-                    marginRight: "-13%",
-                  }}
-                />
-              </a>
-              <a
-                onClick={linkSebaGit}
-                style={{
-                  cursor: "pointer",
-                }}
-              >
-                <AiFillGithub
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#22272E",
-                    marginLeft: "20%",
-                  }}
-                />
+                <AiFillGithub className={styles.iconGit} />
               </a>
             </div>
           </div>
@@ -454,32 +324,116 @@ export const About = () => {
             <div
               style={{
                 marginBottom: "3%",
+                // background: "red",
+                alignSelf: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "80px",
               }}
             >
               <a
-                onClick={linkSeba}
+                onClick={linkMarcos}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillLinkedin
-                  style={{ width: "10%", height: "10%", color: "#0A66C2" }}
-                />
+                <AiFillLinkedin className={styles.iconLinkedin} />
               </a>
               <a
-                onClick={linkSebaGit}
+                onClick={linkMarcosGit}
                 style={{
                   cursor: "pointer",
                 }}
               >
-                <AiFillGithub
-                  style={{
-                    width: "10%",
-                    height: "10%",
-                    color: "#22272E",
-                    marginLeft: "20%",
-                  }}
-                />
+                <AiFillGithub className={styles.iconGit} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.card}>
+          <img
+            src={Ezequiel}
+            alt="Mike"
+            style={{
+              width: "70%",
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+              marginLeft: "15%",
+              marginTop: "3%",
+            }}
+          />
+          <div className={styles.containerTwo}>
+            <h2 className={styles.TitleH2}>Ezequiel De Cunto</h2>
+
+            <div
+              style={{
+                marginBottom: "3%",
+                // background: "red",
+                alignSelf: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "80px",
+              }}
+            >
+              <a
+                onClick={linkEze}
+                style={{
+                  cursor: "pointer",
+                }}
+              >
+                <AiFillLinkedin className={styles.iconLinkedin} />
+              </a>
+              <a
+                onClick={linkEzeGit}
+                style={{
+                  cursor: "pointer",
+                }}
+              >
+                <AiFillGithub className={styles.iconGit} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.card}>
+          <img
+            src={Rodrigo}
+            alt="Mike"
+            style={{
+              width: "70%",
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+              marginLeft: "15%",
+              marginTop: "3%",
+            }}
+          />
+          <div className={styles.containerTwo}>
+            <h2 className={styles.TitleH2}>Rodrigo López</h2>
+
+            <div
+              style={{
+                marginBottom: "3%",
+                // background: "red",
+                alignSelf: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "80px",
+              }}
+            >
+              <a
+                onClick={linkRodri}
+                style={{
+                  cursor: "pointer",
+                }}
+              >
+                <AiFillLinkedin className={styles.iconLinkedin} />
+              </a>
+              <a
+                onClick={linkRodriGit}
+                style={{
+                  cursor: "pointer",
+                }}
+              >
+                <AiFillGithub className={styles.iconGit} />
               </a>
             </div>
           </div>
