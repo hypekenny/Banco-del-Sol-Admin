@@ -3,11 +3,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {rootState, user} from '../constants/types';
 import styles from './UsersStyles.module.css';
 import {useState} from 'react';
-import {getUsers, manageUser} from '../../redux/actions';
+import {getAccounts, getUsers, manageUser} from '../../redux/actions';
 import {MdDelete, MdDeleteForever} from 'react-icons/md';
 import {IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline} from 'react-icons/io';
 
 export function Users() {
+    const allAccounts = useSelector((state: rootState) => state.account);
     const allUsers = useSelector((state: rootState) => state.user);
     const token = useSelector((state: rootState) => state.token);
     const dispatch = useDispatch();
@@ -16,7 +17,6 @@ export function Users() {
     const [undisabled, setUndisabled] = useState<user[]>([]);
     const [view, setView] = useState({view: 'active', index: -1});
     const [search, setSearch] = useState('');
-    const allAccounts = useSelector((state: rootState) => state.account);
 
     async function addDisabled(user: user) {
         disabled.push(user);
@@ -39,6 +39,7 @@ export function Users() {
     function update() {
         setTimeout(() => {
             dispatch(getUsers(token));
+            dispatch(getAccounts());
             setDisabled([]);
             setUndisabled([]);
         }, 200);
@@ -46,6 +47,7 @@ export function Users() {
 
     function wipeData() {
         setView({view: 'active', index: -1});
+        setSearch('');
     }
     function empty(con: string) {
         let empty = true;
@@ -188,7 +190,7 @@ export function Users() {
                                 {allAccounts &&
                                     allAccounts.map((acc, i) =>
                                         view.view === acc.condition && acc.email.includes(search) ? (
-                                            <tr className={styles.fila}>
+                                            <tr key={i} className={styles.fila}>
                                                 <td>{acc.email}</td>
                                                 <td>{acc.cvu}</td>
                                                 <td>{acc.balance && acc.balance.amount}</td>
