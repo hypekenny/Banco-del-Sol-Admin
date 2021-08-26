@@ -1,0 +1,57 @@
+.container {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+
+.column {
+  float: left;
+  width: 30%;
+  height: 20%;
+  /* height: 50%; */
+  margin-bottom: 16px;
+  margin-left: 15px;
+  padding: 0 8px;
+  /* background-color: royalblue; */
+  align-content: center;
+
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.card {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  margin: 8px;
+  width: 30%;
+  height: 20%;
+  /* background-color: red; */
+}
+
+.containerTwo {
+  padding: 0 16px;
+}
+
+.title {
+  color: grey;
+}
+.TitleH2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 10%;
+}
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
