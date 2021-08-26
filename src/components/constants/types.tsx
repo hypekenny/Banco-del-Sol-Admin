@@ -50,6 +50,7 @@ export interface rootState {
     account: account[];
     transaction: transaction[];
     token: string;
+    loged: boolean;
 }
 
 export interface monthType {
