@@ -9,29 +9,6 @@ export const SET_TRANSACTIONS = 'SET_TRANSACTIONS';
 export const SET_TOKEN = 'SET_TOKEN';
 export const LOGIN = 'LOGIN';
 
-export function createUser(user: any, address: any, password: string) {
-    user.address = address;
-    return (dispatch: any) => {
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(user.email.toLowerCase(), password)
-            .then((response) => {
-                response.user?.getIdToken().then(async (idToken) => {
-                    await axios.post(`http://localhost:3001/api/user/`, user, {
-                        headers: {
-                            authorization: `Bearer ${idToken}`,
-                        },
-                    });
-                    dispatch(getUsers(idToken));
-                    dispatch(getAccounts());
-                });
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    };
-}
-
 export function login(data: any) {
     return (dispatch: any) => {
         (async function () {
