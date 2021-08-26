@@ -7,6 +7,7 @@ export const SET_USERS = 'SET_USERS';
 export const SET_ACCOUNTS = 'SET_ACCOUNTS';
 export const SET_TRANSACTIONS = 'SET_TRANSACTIONS';
 export const SET_TOKEN = 'SET_TOKEN';
+export const LOGIN = 'LOGIN';
 
 export function createUser(user: any, address: any, password: string) {
     user.address = address;
@@ -28,6 +29,34 @@ export function createUser(user: any, address: any, password: string) {
             .catch((error) => {
                 console.error(error);
             });
+    };
+}
+
+export function login(data: any) {
+    return (dispatch: any) => {
+        (async function () {
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(data.user.toLowerCase(), data.password.toLowerCase())
+                .then((response) => {
+                    response.user?.getIdToken().then(async (idToken) => {
+                        dispatch({
+                            type: LOGIN,
+                            payload: true,
+                        });
+                        dispatch(setToken(idToken));
+
+                        dispatch(getUsers(idToken));
+
+                        dispatch(getAccounts());
+
+                        dispatch(getTransactions());
+
+                        alert('logueado');
+                    });
+                })
+                .catch((error) => console.log(error));
+        })();
     };
 }
 
