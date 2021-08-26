@@ -25,6 +25,7 @@ export interface account {
     email: string;
     cvu: string;
     balance: balance;
+    condition: string;
 }
 
 export interface address {
