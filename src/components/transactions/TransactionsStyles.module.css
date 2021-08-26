@@ -1,3 +1,23 @@
+.container {
+    display: flex;
+    height: 100%;
+}
+.topBar {
+    position: fixed;
+    width: 80%;
+    height: 150px;
+    background-color: white;
+    z-index: 200;
+}
+.main {
+    margin-top: 10%;
+    margin-left: 5%;
+    width: 95%;
+    position: relative;
+    z-index: 1;
+    overflow: scroll;
+    height: 90%;
+}
 .h1Text {
     font-family: 'Quicksand', sans-serif;
     font-size: 25px;
@@ -54,17 +74,9 @@ h1 {
     font-size: 15px;
     margin: 10px;
 }
-.main {
-    margin: 10px auto;
-    width: 95%;
-    position: relative;
-    z-index: 1;
-    overflow: scroll;
-    height: 90%;
-}
+
 table {
-    border-radius: 3px; /* 
-  border-collapse: collapse; */
+    border-radius: 3px;
     margin: 0;
     text-align: left;
     width: 100%;

@@ -25,8 +25,8 @@ export function Transactions() {
     }
 
     return (
-        <div>
-            <div>
+        <div className={style.container}>
+            <div className={style.topBar}>
                 <h1>Lista de transacciones</h1>
                 <div className={style.buttons}>
                     <button className={style.btn} onClick={() => dispatch(getTransactions())}>
