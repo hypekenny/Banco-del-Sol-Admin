@@ -12,7 +12,7 @@ export function Transactions() {
     const dispatch = useDispatch();
 
     function handleUpdate(id: string, condition: string) {
-        updateTransaction(id, condition);
+        dispatch(updateTransaction(id, condition));
     }
 
     function empty(con: string) {
@@ -51,8 +51,8 @@ export function Transactions() {
                 <table>
                     <thead>
                         <tr>
-                            <th>Sender email</th>
-                            <th>Receiver email</th>
+                            <th>Emisor </th>
+                            <th>Receptor</th>
                             <th>Valor</th>
                             <th>Tipo</th>
                             <th>Comentario</th>
@@ -67,7 +67,7 @@ export function Transactions() {
                                     <tr className={style.fila}>
                                         <td>{tran.senderEmail}</td>
                                         <td>{tran.receiverEmail}</td>
-                                        <td>{tran.value}</td>
+                                        <td>${tran.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}</td>
                                         <td>{tran.type}</td>
                                         <td>{tran.comment}</td>
                                         <td>{tran.date.toString().split(' ').slice(0, 5).join(' ')}</td>

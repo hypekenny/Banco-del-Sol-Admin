@@ -42,8 +42,8 @@ export function Home() {
           TRANSACCIONES
         </button>
 
-        <button className={styles.btn} onClick={() => setView("About")}>
-          ACERCA DE
+        <button className={styles.btn} onClick={() => setView('about')}>
+                SOBRE NOSOTROS
         </button>
       </div>
       <div className={styles.information}>

@@ -106,8 +106,15 @@ export function setToken(token: string) {
     };
 }
 
-export async function updateTransaction(id: string, condition: string) {
-    await axios.put('http://localhost:3000/api2/transactions', {id, condition});
+export function updateTransaction(id: string, condition: string) {
+    return (dispatch: any) => {
+        axios.put('http://localhost:3000/api2/transactions', {id, condition}).then((response) =>
+            dispatch({
+                type: SET_TRANSACTIONS,
+                payload: response.data,
+            })
+        );
+    };
 }
 
 export async function updateAccount(email: string, amount: number) {

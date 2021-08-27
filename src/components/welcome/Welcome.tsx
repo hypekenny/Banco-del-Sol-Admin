@@ -19,14 +19,19 @@ export function Welcome() {
 
             <div className={styles.form}>
                 <div className={styles.formText}>
-                    <label>usuario</label>
-                    <input type="text" value={data.user} onChange={(e) => setData({...data, user: e.target.value})} />
+                    <label>usuario : </label>
+                    <input className={styles.input} type="text" value={data.user} onChange={(e) => setData({...data, user: e.target.value})} />
                 </div>
                 <div className={styles.formText}>
-                    <label>contraseña</label>
-                    <input type="password" value={data.user} onChange={(e) => setData({...data, user: e.target.value})} />
+                    <label>contraseña : </label>
+                    <input
+                        className={styles.input}
+                        type="password"
+                        value={data.password}
+                        onChange={(e) => setData({...data, user: e.target.value})}
+                    />
                 </div>
-                <button onClick={() => (data.user.length > 0 && data.password.length > 0 ? dispatch(login(data)) : console.log('no funca'))}>
+                <button className={styles.btn} onClick={() => (data.user.length > 0 && data.password.length > 0 ? dispatch(login(data)) : null)}>
                     iniciar sesion
                 </button>
             </div>

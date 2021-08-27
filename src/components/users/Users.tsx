@@ -193,7 +193,7 @@ export function Users() {
                                             <tr key={i} className={styles.fila}>
                                                 <td>{acc.email}</td>
                                                 <td>{acc.cvu}</td>
-                                                <td>{acc.balance && acc.balance.amount}</td>
+                                                <td>{acc.balance && acc.balance.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}</td>
                                             </tr>
                                         ) : null
                                     )}

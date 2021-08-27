@@ -129,6 +129,37 @@ export function Data() {
         total.transfer += month.transferencia;
     });
 
+    function getMonth(name: string) {
+        let mes = '';
+        switch (name) {
+            case 'Jan':
+                return (mes = 'Enero');
+            case 'Feb':
+                return (mes = 'Febrero');
+            case 'Mar':
+                return (mes = 'March');
+            case 'Apr':
+                return (mes = 'Abril');
+            case 'May':
+                return (mes = 'Mayo');
+            case 'Jun':
+                return 'Junio';
+            case 'Jul':
+                return (mes = 'Julio');
+            case 'Aug':
+                return (mes = 'Agosto');
+            case 'Sep':
+                return (mes = 'Septiembre');
+            case 'Oct':
+                return (mes = 'Octubre');
+            case 'Nov':
+                return (mes = 'Noviembre');
+            case 'Dec':
+                return (mes = 'Diciembre');
+        }
+        return mes;
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.chartContainer}>
@@ -172,13 +203,13 @@ export function Data() {
                     </LineChart>
                     <div className={styles.textData}>
                         <label>Datos anuales</label>
-                        <label>Recargas: ${total.recharge}</label>
-                        <label>Transferencias: ${total.transfer}</label>
+                        <label>Recargas: ${total.recharge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}</label>
+                        <label>Transferencias: ${total.transfer.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}</label>
                     </div>
                 </div>
             </div>
             <div className={styles.chartContainer}>
-                <h1 className={styles.h1Estadisticas}>Estadistica Mensual de {monthlyData[index]?.name}</h1>
+                <h1 className={styles.h1Estadisticas}>Estadistica Mensual de {getMonth(monthlyData[index]?.name)}</h1>
                 <div className={styles.chart}>
                     <LineChart
                         width={650}
@@ -200,8 +231,8 @@ export function Data() {
                     </LineChart>
                     <div className={styles.textData}>
                         <label>Datos mensuales</label>
-                        <label>Recargas: ${monthlyData[index]?.recarga}</label>
-                        <label>Transferencias: ${monthlyData[index]?.transferencia}</label>
+                        <label>Recargas: ${monthlyData[index]?.recarga.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}</label>
+                        <label>Transferencias: ${monthlyData[index]?.transferencia.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}</label>
                     </div>
                 </div>
             </div>
