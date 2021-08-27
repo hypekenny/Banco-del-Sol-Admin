@@ -37,7 +37,7 @@ export function Home() {
                 </button>
 
                 <button className={styles.btn} onClick={() => setView('about')}>
-                    ACERCA DE
+                    SOBRE NOSOTROS
                 </button>
             </div>
             <div className={styles.information}>
